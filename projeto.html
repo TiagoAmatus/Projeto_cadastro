@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/projeto.css">
+    <title>Cadastro</title>
+    <script>
+        // Função para verificar se o campo anterior é verdadeiro
+        function verificarCampoAnterior() {
+            var menoresde16 = document.getElementById("menores_de_16");
+            var numerodemenores = document.getElementById("numero_de_menores");
+
+            // Verifica se o valor do campo anterior é verdadeiro
+            if (menoresde16.checked) {
+                numerodemenores.style.display = "block"; // Exibe o campo condicional
+            } else {
+                numerodemenores.style.display = "none"; // Oculta o campo condicional
+            }
+        }
+    </script>
+</head>
+<header>
+    <h1>Cadastro</h1>
+</header>
+<body>
+    <form action="processar_cadastro" method="POST">
+        <h2>Cadastro do responsável</h2>
+
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="cpf">CPF:</label>
+        <input type="tel" id="cpf" name="cpf" required minlength=11" maxlength="11"><br><br>
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" required minlength="8" maxlength="11"><br><br>
+
+        <h2>Sobre a família</h2>
+
+        <label for="salario">Faixa salarial:</label>
+        <select id="salario" name="salario">
+            <option value="----">----</option>
+            <option value="ate_1">Até 1 salário mínimo</option>
+            <option value="1_a_2">De 1 a 2 salários mínimos</option>
+            <option value="2_a_3">De 2 a 3 salários mínimos</option>
+            <option value=">_4">Acima de 4 salários mínimos</option>
+        </select><br><br>
+
+        <label for="integrantes">Número de integrantes(incluindo responsável):</label>
+        <input type="number" id="integrantes" name="integrantes" required><br><br>        
+
+        
+
+        <label for="menores_de_16">Existem dependentes menores de 16 anos?</label>
+        <input type="checkbox" id="menores_de_16" name="menores_de_16" onchange="verificarCampoAnterior()"><br><br>
+
+        <div id="numero_de_menores" style="display: none;">
+            <label for="numero_de_menores">Quantos são:</label>
+                <select id="numero_de_menores" name="numero_de_menores">
+                    <option value="----">----</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="+5">mais de 5</option>
+                </select><br><br>
+
+                <label for="matriculados">Os dependentes estão matrículados?</label>
+                <input type="checkbox" id="matriculados" name="matriculados"><br><br>
+        </div>
+        
+
+        <input type="submit" id="submit" value="Cadastrar">
+    
+    </form>
+</body>
+</html>
+
+
